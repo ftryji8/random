@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Pizza - Pizzería Italiana Auténtica</title>
+    <link rel="stylesheet" href="css/estillos_2.css">
+</head>
+
+<body>
+    <!-- HEADER: Contiene navegación principal compartida en todas las páginas -->
+    <!--#include virtual="inc/header.html" -->
+
+    <!-- CONTENIDO PRINCIPAL: Página inicial con descripción y galería -->
+    <main class="page-main">
+        <!-- SECCIÓN: Presentación del restaurante -->
+        <section class="hero">
+            <h1>Bienvenido a Bella Pizza</h1>
+            <p>
+                Descubre la auténtica experiencia de la cocina italiana con nuestras pizzas elaboradas
+                artesanalmente. Utilizamos ingredientes frescos y de la más alta calidad para crear
+                pizzas que deleitarán tu paladar.
+            </p>
+            <p>
+                Cada pizza es un obra de arte culinaria, preparada con pasión y tradición italiana.
+            </p>
+            <a href="contact.shtml" class="button">Realizar un Pedido</a>
+        </section>
+
+        <!-- SECCIÓN: Galería de pizzas destacadas
+         - Contiene tres pizzas representativas con fotos (placeholders) y descripciones.
+         - Cada tarjeta de pizza incluye nombre, descripción e ingredientes principales.
+    -->
+        <section class="gallery">
+            <h2>Nuestras Pizzas Especiales</h2>
+
+            <div class="gallery-grid">
+                <!-- PIZZA 1: Margherita Clásica -->
+                <article class="pizza-card">
+                    <div class="pizza-image">
+                        <img src="img/galeria1.jpg" alt="Pizza Margherita - tomate, mozzarella y albahaca">
+                    </div>
+                    <div class="pizza-content">
+                        <h3>Margarita</h3>
+                        <p class="pizza-description">
+                            La pizza más auténtica de Italia. Salsa de tomate casera, queso mozzarella fresca
+                            y hoja de albahaca fresca.
+                        </p>
+                        <p class="pizza-price">€ 10,50</p>
+                        <p class="pizza-ingredients"><strong>Ingredientes:</strong> Tomate, Mozzarella, Albahaca,
+                            Aceite
+                            de oliva</p>
+                    </div>
+                </article>
+
+                <!-- PIZZA 2: Surprema -->
+                <article class="pizza-card">
+                    <div class="pizza-image">
+                        <img src="img/galeria2.jpg" alt="Pizza Suprema - combinación de carnes">
+                    </div>
+                    <div class="pizza-content">
+                        <h3>Surprema</h3>
+                        <p class="pizza-description">
+                            Es el nombre más común en cadenas internacionales cuando una pizza lleva una combinación
+                            generosa de carnes (como pollo), cebolla, pimientos y aceitunas negras.
+                        </p>
+                        <p class="pizza-price">€ 13,50</p>
+                        <p class="pizza-ingredients"><strong>Ingredientes:</strong>Pollo,cebolla,pimientos,aceitunas
+                            negras</p>
+                    </div>
+                </article>
+
+                <!-- PIZZA 3: Peperoni -->
+                <article class="pizza-card">
+                    <div class="pizza-image">
+                        <img src="img/galeria3.jpg" alt="Pizza Peperoni">
+                    </div>
+                    <div class="pizza-content">
+                        <h3>Peperoni</h3>
+                        <p class="pizza-description">
+                            Para los amantes de la carne. Pepperoni crujiente, jamón serrano, bacon y chorizo
+                            sobre una base de queso mozzarella derretido.
+                        </p>
+                        <p class="pizza-price">€ 14,00</p>
+                        <p class="pizza-ingredients"><strong>Ingredientes:</strong> Pepperoni,Queso mozzarella,Salsa de
+                            tomate</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Características del restaurante -->
+        <section class="features">
+            <h2>¿Por Qué Elegir Bella Pizza?</h2>
+            <div class="features-grid">
+                <article class="feature-item">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Ingredientes Frescos</h3>
+                    <p>Utilizamos solo ingredientes frescos y de temporada, seleccionados cuidadosamente de proveedores
+                        locales.</p>
+                </article>
+                <article class="feature-item">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3>Maestría Italiana</h3>
+                    <p>Nuestro chef italiano tiene más de 20 años de experiencia en la preparación de pizzas auténticas.
+                    </p>
+                </article>
+                <article class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Preparamos tu pizza fresca al momento y la entregamos caliente en tu puerta en 30 minutos.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- LLAMADA A LA ACCIÓN: Botón para hacer un pedido -->
+        <section class="cta-section">
+            <h2>¿Tienes hambre?</h2>
+            <p>Haz tu pedido ahora y recibe un descuento especial en tu primera compra.</p>
+            <a href="contact.shtml" class="button button-large">Realizar Pedido</a>
+        </section>
+    </main>
+
+    <!-- FOOTER: Pie de página compartido en todas las páginas -->
+    <!--#include virtual="inc/footer.html" -->
+
+    <!-- SCRIPT: Carga header, footer y maneja la navegación -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

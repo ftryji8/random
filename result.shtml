@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmación del Pedido - Bella Pizza</title>
+  <link rel="stylesheet" href="css/estillos_2.css">
+</head>
+
+<body>
+  <!-- HEADER: Navegación principal compartida -->
+  <!--#include virtual="inc/header.html" -->
+
+  <!-- CONTENIDO PRINCIPAL: Página de confirmación de pedido -->
+  <main class="page-main">
+    <!-- SECCIÓN: Contenedor de resultado del pedido
+         - Se rellena dinámicamente con JavaScript (función displaySubmissionResult
+           en js/main.js) a partir de los parámetros de la URL.
+         - Muestra confirmación y resumen del pedido realizado.
+    -->
+    <section class="result-section">
+      <div id="submission-result" aria-live="polite" role="status">
+        <!-- El contenido se carga aquí mediante JavaScript -->
+      </div>
+
+      <!-- SECCIÓN: Información sobre los próximos pasos -->
+      <section class="post-order-actions">
+        <h2>¿Qué sigue?</h2>
+        <div class="actions-grid">
+          <article class="action-item">
+            <div class="action-icon">📞</div>
+            <h3>Te Contactaremos</h3>
+            <p>Nos pondremos en contacto en breve para confirmar tu pedido y detalles de entrega.</p>
+          </article>
+          <article class="action-item">
+            <div class="action-icon">🍕</div>
+            <h3>Preparamos tu Pizza</h3>
+            <p>Nuestro equipo comenzará a preparar tu pizza fresca al momento con los mejores ingredientes.</p>
+          </article>
+          <article class="action-item">
+            <div class="action-icon">🚚</div>
+            <h3>Entrega Rápida</h3>
+            <p>Tu pizza será entregada caliente a tu puerta en 30 minutos o menos.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: Volver a realizar un pedido -->
+      <section class="cta-section">
+        <h2>¿Necesitas algo más?</h2>
+        <div class="cta-buttons">
+          <a href="contact.shtml" class="button button-primary">Realizar Otro Pedido</a>
+          <a href="index.shtml" class="button button-secondary">Volver a la Página Principal</a>
+          <a href="about.shtml" class="button button-secondary">Conoce Más Sobre Nosotros</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- FOOTER: Pie de página compartido -->
+  <!--#include virtual="inc/footer.html" -->
+
+  <!-- SCRIPT: Carga cabecera/pie y procesa el resultado del pedido -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

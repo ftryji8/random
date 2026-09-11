@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros - Bella Pizza</title>
+  <link rel="stylesheet" href="css/estillos_2.css">
+</head>
+
+<body>
+  <!-- HEADER: Navegación principal compartida -->
+  <!--#include virtual="inc/header.html" -->
+
+  <!-- CONTENIDO PRINCIPAL: Información sobre el restaurante y nuestros productos -->
+  <main class="page-main">
+    <!-- SECCIÓN: Presentación de la empresa -->
+    <section class="hero">
+      <h1>Sobre Bella Pizza</h1>
+      <p>
+        Con más de 15 años de tradición, Bella Pizza es el destino preferido para los amantes
+        de la auténtica gastronomía italiana. Nuestra pasión por la calidad y la excelencia
+        se refleja en cada pizza que preparamos.
+      </p>
+    </section>
+
+    <!-- SECCIÓN: Historia y valores -->
+    <section class="about-section">
+      <h2>Nuestra Historia</h2>
+      <p>
+        Bella Pizza fue fundada en 2011 por Giovanni Rossi, un maestro pizzero que emigró desde
+        Nápoles, Italia, trayendo consigo recetas transmitidas de generación en generación.
+        Lo que comenzó como un pequeño local familiar, hoy es un referente de calidad en la ciudad.
+      </p>
+      <p>
+        Cada día, nuestro equipo se esfuerza por mantener los estándares más altos de calidad,
+        combinando técnicas tradicionales italianas con ingredientes frescos y de temporada.
+      </p>
+    </section>
+
+    <!-- SECCIÓN: Ingredientes y productos utilizados -->
+    <section class="ingredients-section">
+      <h2>Nuestros Ingredientes Premium</h2>
+      <p>
+        En Bella Pizza creemos que la excelencia comienza con los ingredientes. Por eso seleccionamos
+        cuidadosamente cada producto:
+      </p>
+
+      <div class="ingredients-grid">
+        <!-- INGREDIENTE 1: Tomates -->
+        <article class="ingredient-card">
+          <div class="ingredient-icon">🍅</div>
+          <h3>Tomates San Marzano</h3>
+          <p>
+            Importados directamente de la región de Campania en Italia, estos tomates son
+            la base de nuestras salsas. Su sabor dulce y acido equilibrado crea la salsa perfecta.
+          </p>
+          <p><strong>Origen:</strong> Campania, Italia</p>
+        </article>
+
+        <!-- INGREDIENTE 2: Queso Mozzarella -->
+        <article class="ingredient-card">
+          <div class="ingredient-icon">🧀</div>
+          <h3>Mozzarella de Búfala</h3>
+          <p>
+            Queso fresco de búfala, elaborado artesanalmente. Su textura cremosa y sabor
+            suave lo hacen perfecto para nuestras pizzas. Recibida 2-3 veces a la semana.
+          </p>
+          <p><strong>Origen:</strong> Campania, Italia</p>
+        </article>
+
+        <!-- INGREDIENTE 3: Aceite de Oliva -->
+        <article class="ingredient-card">
+          <div class="ingredient-icon">🫒</div>
+          <h3>Aceite de Oliva Extra Virgen</h3>
+          <p>
+            Aceite de oliva premium de primera prensada en frío. Su sabor frutado característico
+            y su aroma añaden un toque final perfecto a cada pizza.
+          </p>
+          <p><strong>Origen:</strong> Toscana, Italia</p>
+        </article>
+
+        <!-- INGREDIENTE 4: Vegetales frescos -->
+        <article class="ingredient-card">
+          <div class="ingredient-icon">🥒</div>
+          <h3>Vegetales Frescos</h3>
+          <p>
+            Pimientos, cebollas, champiñones, aceitunas y alcaparras seleccionadas de mercados
+            locales. Frescos y orgánicos, garantizando la mejor calidad.
+          </p>
+          <p><strong>Origen:</strong> Proveedores locales</p>
+        </article>
+
+        <!-- INGREDIENTE 5: Carnes curadas -->
+        <article class="ingredient-card">
+          <div class="ingredient-icon">🍖</div>
+          <h3>Carnes Italianas Curadas</h3>
+          <p>
+            Pepperoni, jamón serrano, prosciutto y pancetta, seleccionados de productor italiano
+            de confianza. Sabor auténtico y calidad garantizada.
+          </p>
+          <p><strong>Origen:</strong> Emilia-Romaña, Italia</p>
+        </article>
+
+        <!-- INGREDIENTE 6: Hierbas aromáticas -->
+        <article class="ingredient-card">
+          <div class="ingredient-icon">🌿</div>
+          <h3>Hierbas Aromáticas</h3>
+          <p>
+            Albahaca fresca, orégano, tomillo y romero. Cultivadas en nuestro propio jardín
+            o adquiridas diariamente de productores locales para garantizar frescura máxima.
+          </p>
+          <p><strong>Origen:</strong> Nuestro jardín + mercado local</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: Nuestro equipo y compromiso -->
+    <section class="team-section">
+      <h2>Nuestro Equipo</h2>
+      <div class="team-grid">
+        <article class="team-member">
+          <div class="member-avatar">👨‍🍳</div>
+          <h3>Giovanni Rossi</h3>
+          <p><strong>Chef Principal</strong></p>
+          <p>Maestro pizzero con 30 años de experiencia. Nacido en Nápoles, trae consigo la auténtica tradición
+            italiana.</p>
+        </article>
+
+        <article class="team-member">
+          <div class="member-avatar">👩‍🍳</div>
+          <h3>Sofia Marino</h3>
+          <p><strong>Sous Chef</strong></p>
+          <p>Especializada en salsas y masas. Garantiza la consistencia y calidad en cada preparación.</p>
+        </article>
+
+        <article class="team-member">
+          <div class="member-avatar">🎓</div>
+          <h3>Marco Colombo</h3>
+          <p><strong>Gerente de Servicio al Cliente</strong></p>
+          <p>Dedicado a garantizar que cada cliente tenga una experiencia excepcional en Bella Pizza.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- LLAMADA A LA ACCIÓN: Invitación a hacer un pedido -->
+    <section class="cta-section">
+      <h2>Prueba la Diferencia</h2>
+      <p>Experimentar nuestras pizzas es descubrir el sabor auténtico de Italia.</p>
+      <a href="contact.shtml" class="button button-large">Hacer un Pedido Ahora</a>
+    </section>
+  </main>
+
+  <!-- FOOTER: Pie de página compartido -->
+  <!--#include virtual="inc/footer.html" -->
+  <!-- SCRIPT: Carga componentes compartidos -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

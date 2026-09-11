@@ -1,0 +1,883 @@
+/* ========================================
+   BELLA PIZZA - ESTILOS CSS PRINCIPALES
+   ========================================
+   
+   Documento de estilos para el sitio web de la pizzería Bella Pizza.
+   
+   SECCIONES:
+   - Variables CSS (colores temáticos)
+   - Estilos base
+   - Navegación (header)
+   - Galería de pizzas
+   - Componentes reutilizables
+   - Formularios
+   - Resultado/Confirmación
+   - Footer
+   - Responsive design
+   
+   COLORES PRINCIPALES:
+   - Rojo pizza (#D62828): Color primario
+   - Naranja (#F77F00): Color de acento
+   - Verde (#06A77D): Color de éxito
+*/
+
+/* VARIABLES CSS: Define colores, sombras y espaciado global */
+:root {
+    color-scheme: light;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background-color: #fdf4f1;
+    color: #20232a;
+
+    /* Colores temáticos de pizzería italiana */
+    --primary: #D62828;
+    --primary-dark: #A01F1F;
+    --accent: #F77F00;
+    --muted: #64748b;
+    --surface: #ffffff;
+    --border: #d1d5db;
+    --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --pizza-red: #D62828;
+    --pizza-gold: #F77F00;
+    --pizza-green: #06A77D;
+    --gold: var(--pizza-gold);
+}
+
+/* ========================================
+   CABECERA DEL SITIO / NAVEGACIÓN
+   ========================================
+   Bloque único de estilos para inc/header.html.
+   La cabecera queda fija arriba, por defecto es clara;
+   al hacer scroll (clase .scrolled añadida desde main.js)
+   la sombra se intensifica. Los enlaces del menú van en
+   mayúsculas con subrayado al pasar el ratón (estilo Izan).
+*/
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--surface);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.site-header.scrolled {
+    padding: 0.65rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* LOGOTIPO */
+.brand a {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ESPACIADO SUPERIOR: como la cabecera es fija, el contenido necesita este margen */
+.page-main {
+    padding-top: 5.5rem;
+}
+
+/* NAVEGACIÓN PRINCIPAL */
+.main-nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list a {
+    display: inline-block;
+    position: relative;
+    margin: 0 0.75rem;
+    padding: 0.6rem 0.1rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-list a:hover {
+    color: var(--primary-dark);
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+/* BOTÓN DE MENÚ (hamburguesa, solo para móviles) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    font-size: 0;
+    color: transparent;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+}
+
+
+/* ========================================
+   SECCIÓN HERO (Presentación Principal)
+   ======================================== */
+
+.hero {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(214, 40, 40, 0.05) 0%, rgba(247, 127, 0, 0.05) 100%);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin: 0 0 1rem;
+    color: var(--primary);
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+/* ========================================
+   GALERÍA DE PIZZAS
+   ======================================== */
+
+.gallery {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.gallery h2 {
+    text-align: center;
+    color: var(--primary);
+    margin: 0 0 2rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+/* GRID DE PIZZAS: Se adapta automáticamente */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 0;
+}
+
+/* TARJETA DE PIZZA */
+.pizza-card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.pizza-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(214, 40, 40, 0.15);
+    border-color: var(--primary);
+}
+
+/* IMAGEN DE PIZZA */
+.pizza-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--pizza-gold) 0%, var(--primary) 100%);
+}
+
+.pizza-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CONTENIDO DE LA TARJETA */
+.pizza-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.pizza-card h3 {
+    margin: 0 0 0.5rem;
+    color: var(--primary);
+    font-size: 1.25rem;
+}
+
+.pizza-description {
+    color: var(--muted);
+    margin: 0.5rem 0 1rem;
+    flex-grow: 1;
+    font-size: 0.95rem;
+}
+
+.pizza-price {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.pizza-ingredients {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 1rem 0 0;
+    padding: 0.75rem;
+    background: #f0f0f0;
+    border-radius: 0.5rem;
+}
+
+/* ========================================
+   CARACTERÍSTICAS Y VENTAJAS
+   ======================================== */
+
+.features {
+    margin: 2rem 0;
+}
+
+.features h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+    color: var(--primary);
+    margin: 0.5rem 0;
+}
+
+.feature-item p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   SECCIONES SOBRE INGREDIENTES/EQUIPO
+   ======================================== */
+
+.ingredients-section,
+.about-section,
+.team-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.ingredients-grid,
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.ingredient-card,
+.team-member {
+    background: linear-gradient(135deg, #fff9f5 0%, #fff 100%);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.ingredient-card:hover,
+.team-member:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(214, 40, 40, 0.12);
+    border-color: var(--primary);
+}
+
+.ingredient-icon,
+.member-avatar {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.ingredient-card h3,
+.team-member h3 {
+    color: var(--primary);
+    margin: 0.5rem 0;
+}
+
+.ingredient-card p,
+.team-member p {
+    color: var(--muted);
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   LLAMADA A LA ACCIÓN (CTA)
+   ======================================== */
+
+.cta-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--pizza-gold) 100%);
+    border-radius: 1rem;
+    color: white;
+    text-align: center;
+}
+
+.cta-section h2 {
+    margin: 0 0 0.5rem;
+    color: white;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.cta-section p {
+    margin: 0 0 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* ========================================
+   FORMULARIO
+   ======================================== */
+
+.form-header {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(214, 40, 40, 0.05) 0%, rgba(247, 127, 0, 0.05) 100%);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-header h1 {
+    color: var(--primary);
+    margin: 0 0 0.5rem;
+}
+
+.form-header p {
+    color: var(--muted);
+    margin: 0;
+}
+
+.form-section {
+    margin: 2rem 0;
+}
+
+.site-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    max-width: 900px;
+    margin: 0 auto 2rem;
+}
+
+.site-form fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-form legend {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/* FIELDSET SECUNDARIO */
+.form-fieldset {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: #fafafa;
+}
+
+.form-fieldset legend {
+    padding: 0 0.5rem;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* INPUTS Y TEXTAREAS */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 0.5rem;
+    background: white;
+    color: #111827;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* GRID DE FORMULARIO (dos columnas) */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    margin-bottom: 0;
+}
+
+/* RADIOBUTTONS Y CHECKBOXES */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    cursor: pointer;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.form-note {
+    margin: 1rem 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* BOTONES DEL FORMULARIO */
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* ========================================
+   BOTONES REUTILIZABLES
+   ======================================== */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.95rem 1.4rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.button:hover,
+.button:focus-visible {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(214, 40, 40, 0.25);
+}
+
+.button-primary {
+    background: var(--primary);
+}
+
+.button-secondary {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.button-secondary:hover {
+    background: #cbd5e1;
+}
+
+.button-large {
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+}
+
+/* ========================================
+   RESULTADO DEL FORMULARIO
+   ======================================== */
+
+.result-section {
+    margin: 2rem 0;
+}
+
+.order-result {
+    margin-top: 2rem;
+}
+
+/* TARJETA DE RESULTADO */
+.result-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #fff 100%);
+    border: 2px solid var(--pizza-green);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(6, 168, 125, 0.15);
+}
+
+.result-card h2 {
+    color: var(--pizza-green);
+    text-align: center;
+    margin: 0 0 1.5rem;
+}
+
+.result-card dl {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.result-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--primary);
+}
+
+.result-card dt {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.result-card dd {
+    margin: 0;
+    color: #555;
+}
+
+.result-card p {
+    text-align: center;
+    margin: 1.5rem 0 0;
+}
+
+.result-card a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ========================================
+   ACCIONES POST-PEDIDO
+   ======================================== */
+
+.post-order-actions {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.action-item {
+    background: linear-gradient(135deg, #fff9f5 0%, white 100%);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.action-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.action-item h3 {
+    color: var(--primary);
+    margin: 0.5rem 0;
+}
+
+.action-item p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.site-footer {
+    background: #222;
+    color: white;
+    padding: 2rem 1.5rem;
+    margin-top: 3rem;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--pizza-gold);
+    margin-top: 0;
+}
+
+.footer-section p,
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0.5rem 0;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin: 0.5rem 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN (Tablets y Móviles)
+   ======================================== */
+
+@media (max-width: 770px) {
+
+    /* NAVEGACIÓN MÓVIL */
+    .main-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-nav.active {
+        display: flex;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        border-bottom: 2px solid var(--primary);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-list a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0;
+    }
+
+    /* GRIDS EN MÓVIL */
+    .gallery-grid,
+    .features-grid,
+    .ingredients-grid,
+    .team-grid,
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .page-main {
+        padding: 1rem;
+        padding-top: 5.5rem;
+    }
+
+    .site-form,
+    .result-card {
+        padding: 1.25rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .result-item {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .cta-buttons a {
+        width: 100%;
+    }
+
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+}

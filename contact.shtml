@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realiza tu Pedido - Bella Pizza</title>
+  <link rel="stylesheet" href="css/estillos_2.css">
+</head>
+
+<body>
+  <!-- HEADER: Navegación principal compartida -->
+  <!--#include virtual="inc/header.html" -->
+
+  <!-- CONTENIDO PRINCIPAL: Formulario de pedido con múltiples campos -->
+  <main class="page-main">
+    <!-- SECCIÓN: Encabezado del formulario -->
+    <section class="form-header">
+      <h1>Realiza tu Pedido</h1>
+      <p>Completa el formulario de abajo para realizar tu pedido. Los campos marcados con * son obligatorios.</p>
+    </section>
+
+    <!-- SECCIÓN: Formulario de pedido
+         - Contiene varios tipos de campos: texto, email, teléfono, select, radio, checkbox, textarea.
+         - Validación HTML5 con pattern, required y otros atributos.
+         - Manejo de envío con JavaScript que muestra resultados en la página.
+    -->
+    <section class="form-section">
+      <form id="orderForm" class="site-form" method="GET" action="result.shtml">
+        <fieldset>
+          <legend>Información del Pedido</legend>
+
+          <!-- BLOQUE: Información personal -->
+          <fieldset class="form-fieldset">
+            <legend>Tus Datos Personales</legend>
+
+            <!-- CAMPO: Nombre (obligatorio, texto) -->
+            <div class="form-group">
+              <label for="customerName">Nombre Completo *</label>
+              <input id="customerName" type="text" name="name" autocomplete="name"
+                pattern="[a-záéíóúàèìòùäëïöüñA-ZÁÉÍÓÚÀÈÌÒÙÄËÏÖÜÑ\s'-]{2,100}"
+                title="Solo letras, espacios, guiones y apóstrofes. Mínimo 2 caracteres."
+                placeholder="Ej: Juan García López" required aria-required="true">
+              <small>Mínimo 2 caracteres, solo letras y espacios.</small>
+            </div>
+
+            <!-- CAMPO: Email (obligatorio, email) -->
+            <div class="form-group">
+              <label for="customerEmail">Correo Electrónico *</label>
+              <input id="customerEmail" type="email" name="email" autocomplete="email"
+                placeholder="tu.email@ejemplo.com" required aria-required="true">
+              <small>Usaremos este correo para confirmarte tu pedido.</small>
+            </div>
+
+            <!-- CAMPO: Teléfono (opcional, teléfono) -->
+            <div class="form-group">
+              <label for="customerPhone">Teléfono (Opcional)</label>
+              <input id="customerPhone" type="tel" name="phone" autocomplete="tel" inputmode="tel"
+                pattern="^[0-9+()\s-]{7,20}$" maxlength="20" placeholder="+34 612 345 678"
+                title="Formato: +34 612 345 678 o 612345678">
+              <small>Para contactarte si hay preguntas sobre tu pedido.</small>
+            </div>
+          </fieldset>
+
+          <!-- BLOQUE: Selección de pizza -->
+          <fieldset class="form-fieldset">
+            <legend>Tu Pizzas</legend>
+
+            <!-- CAMPO: Tipo de pizza (obligatorio, select/dropdown) -->
+            <div class="form-group">
+              <label for="pizzaType">Tipo de Pizza Preferida *</label>
+              <select id="pizzaType" name="pizzaType" required aria-required="true">
+                <option value="">-- Selecciona una opción --</option>
+                <option value="margherita">Margherita (10,50€) - Clásica italiana</option>
+                <option value="quattro">Quattro Formaggi (13,50€) - Cuatro quesos</option>
+                <option value="carnivora">Carnívora (14,00€) - Carnes variadas</option>
+                <option value="vegetariana">Vegetariana (11,00€) - Vegetales frescos</option>
+                <option value="hawaiana">Hawaiana (12,50€) - Piña y jamón</option>
+                <option value="bbq">BBQ (13,00€) - Salsa BBQ y carnes ahumadas</option>
+              </select>
+              <small>Selecciona tu pizza favorita del menú.</small>
+            </div>
+
+            <!-- CAMPO: Cantidad (número) -->
+            <div class="form-group">
+              <label for="quantity">Cantidad de Pizzas *</label>
+              <input id="quantity" type="number" name="quantity" min="1" max="10" value="1" required
+                aria-required="true">
+              <small>Mínimo 1, máximo 10 pizzas por pedido.</small>
+            </div>
+          </fieldset>
+
+          <!-- BLOQUE: Método de contacto (radiobuttons) -->
+          <fieldset class="form-fieldset">
+            <legend>Método de Contacto Preferido *</legend>
+            <p class="form-note">¿Cómo prefieres que te contactemos para confirmar tu pedido?</p>
+
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="contactMethod" value="email" checked required>
+                📧 Por Email
+              </label>
+              <label>
+                <input type="radio" name="contactMethod" value="telefono">
+                📞 Por Teléfono
+              </label>
+              <label>
+                <input type="radio" name="contactMethod" value="whatsapp">
+                💬 Por WhatsApp
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- BLOQUE: Opciones adicionales (checkboxes) -->
+          <fieldset class="form-fieldset">
+            <legend>Opciones Adicionales</legend>
+
+            <div class="checkbox-group">
+              <label>
+                <input type="checkbox" name="newsletter" value="yes">
+                ✉️ Deseo recibir ofertas y promociones especiales
+              </label>
+              <label>
+                <input type="checkbox" name="giftWrap" value="yes">
+                🎁 Empacar como regalo
+              </label>
+              <label>
+                <input type="checkbox" name="urgentDelivery" value="yes">
+                ⚡ Entrega urgente (adicional +2€)
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- BLOQUE: Comentarios y observaciones especiales -->
+          <fieldset class="form-fieldset">
+            <legend>Notas Especiales (Opcional)</legend>
+
+            <!-- CAMPO: Textarea para comentarios -->
+            <div class="form-group">
+              <label for="specialNotes">Comentarios Especiales</label>
+              <textarea id="specialNotes" name="message" rows="5"
+                placeholder="Ej: Sin cebolla, extra queso, instrucciones especiales para la entrega..."
+                maxlength="500"></textarea>
+              <small>Máximo 500 caracteres. Aquí puedes añadir solicitudes especiales.</small>
+            </div>
+          </fieldset>
+
+          <!-- BLOQUE: Dirección de entrega -->
+          <fieldset class="form-fieldset">
+            <legend>Dirección de Entrega *</legend>
+
+            <!-- CAMPO: Fecha de entrega (campo nativo de tipo fecha) -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="deliveryDate">Fecha de Entrega *</label>
+                <input id="deliveryDate" type="date" name="deliveryDate" required aria-required="true">
+                <small>Elige el día en que quieres recibir tu pedido.</small>
+              </div>
+
+              <!-- CAMPO: Franja horaria (select, opcional) -->
+              <div class="form-group">
+                <label for="timeSlot">Franja Horaria (opcional)</label>
+                <select id="timeSlot" name="timeSlot">
+                  <option value="">-- Selecciona una franja --</option>
+                  <option value="08:00-10:00">08:00 - 10:00</option>
+                  <option value="10:00-12:00">10:00 - 12:00</option>
+                  <option value="12:00-14:00">12:00 - 14:00</option>
+                  <option value="14:00-16:00">14:00 - 16:00</option>
+                  <option value="16:00-18:00">16:00 - 18:00</option>
+                  <option value="18:00-20:00">18:00 - 20:00</option>
+                </select>
+                <small>Elige una franja horaria aproximada para la entrega.</small>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="address">Dirección *</label>
+              <input id="address" type="text" name="address" placeholder="Calle, número, piso" required
+                aria-required="true">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">Ciudad *</label>
+                <input id="city" type="text" name="city" placeholder="Madrid" required aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="postalCode">Código Postal *</label>
+                <input id="postalCode" type="text" name="postalCode" pattern="^[0-9]{5}$" placeholder="28001"
+                  title="Código postal de 5 dígitos" required aria-required="true">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- BOTONES: Acciones del formulario -->
+          <div class="form-actions">
+            <button type="submit" class="button button-primary">Enviar Pedido</button>
+            <button type="reset" class="button button-secondary">Limpiar Formulario</button>
+          </div>
+        </fieldset>
+      </form>
+
+      <!-- RESULTADO: Contenedor donde se muestra el resumen del pedido -->
+      <div id="submission-result" class="order-result" aria-live="polite" role="status"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER: Pie de página compartido -->
+  <!--#include virtual="inc/footer.html" -->
+
+  <!-- SCRIPT: Maneja eventos del formulario y validación -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
